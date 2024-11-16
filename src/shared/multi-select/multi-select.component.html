@@ -1,0 +1,10 @@
+<p-multiSelect 
+    [options]="options" 
+    [(ngModel)]="selectedValues" 
+    optionLabel="name" 
+(ngModelChange)="onSelect($event)"
+[disabled]="disabled",
+[showClear]="true"
+[filter]="true"
+variant="filled"
+[readonly]="readonly" />
