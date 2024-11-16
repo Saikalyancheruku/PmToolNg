@@ -1,0 +1,9 @@
+<textarea 
+    rows="5"
+    cols="30" 
+    pInputTextarea 
+    [(ngModel)]="value"
+    [disabled]="disabled"
+    (ngModelChange)="onValueChange($event)"
+    [autoResize]="autoResize">
+</textarea>

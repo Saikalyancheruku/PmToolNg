@@ -1,14 +1,15 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 
 @Component({
   selector: 'app-calendar-component',
   standalone: true,
-  imports: [CalendarModule],
+  imports: [CalendarModule,FormsModule],
   templateUrl: './calendar-component.component.html',
   styleUrl: './calendar-component.component.css'
 })
-export class CalendarComponentComponent {
+export class CalendarComponent {
   @Input() selectedDate: Date | null = null
   @Input() minDate: Date = new Date();
   @Input() dateFormat: string = 'yyyy-mm-dd';

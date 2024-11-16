@@ -1,13 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CheckboxModule } from 'primeng/checkbox';
 @Component({
   selector: 'app-checkbox-component',
   standalone: true,
-  imports: [CheckboxModule],
+  imports: [CheckboxModule,FormsModule],
   templateUrl: './checkbox-component.component.html',
   styleUrl: './checkbox-component.component.css'
 })
-export class CheckboxComponentComponent {
+export class CheckboxComponent {
   @Input() valueSelected :boolean=false;
   @Input() label :string | null= null;
   @Input() disabled : boolean=false;

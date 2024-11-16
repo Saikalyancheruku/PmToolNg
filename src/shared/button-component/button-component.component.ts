@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
   templateUrl: './button-component.component.html',
   styleUrl: './button-component.component.css'
 })
-export class ButtonComponentComponent {
+export class ButtonComponent {
   @Input() label: string = 'Select'; 
   @Input() icon: string = 'pi pi-check'; 
   @Input() styleClass: string = ''; 
