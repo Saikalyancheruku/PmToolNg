@@ -1,0 +1,12 @@
+<p-timeline 
+  [value]="events" 
+  [align]="align" 
+  [layout]="layout"
+  [styleClass]="styleClass">
+  <ng-template pTemplate="content" let-event>
+    <div class="timeline-event">
+      <h3>{{ event.title }}</h3>
+      <p>{{ event.description }}</p>
+    </div>
+  </ng-template>
+</p-timeline>

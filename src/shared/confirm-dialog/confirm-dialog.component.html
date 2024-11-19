@@ -1,0 +1,9 @@
+<p-confirmDialog [visible]="visible"  [closable]="false" [position]="position">
+    <p-header>{{ title }}</p-header>
+    <p>{{ message }}</p>
+    <p-footer>
+      <button pButton label="Cancel" icon="pi pi-times" (click)="onCancel()"></button>
+      <button pButton label="Confirm" icon="pi pi-check" (click)="onConfirm()"></button>
+    </p-footer>
+  </p-confirmDialog>
+  

@@ -1,6 +1,6 @@
 <p-dropdown 
     [options]="options",
-    [(ngModel)]="selectedValue" 
+    [(ngModel)]="selectedValues" 
     (onChange)="onSelect($event.value)"
     [checkmark]="true",
     optionLabel="name" 
@@ -9,4 +9,5 @@
     [filter]="true"
     [virtualScroll]="true"
     [virtualScrollItemSize]="5"
-    [disabled]="disabled"/>
+    [disabled]="disabled"
+    [optionLabel]="optionLabel"/>

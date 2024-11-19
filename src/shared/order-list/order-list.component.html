@@ -1,0 +1,9 @@
+<p-orderList 
+  [value]="items" 
+  [dragdrop]="dragDrop" 
+  [listStyle]="listStyle"
+  [dragdrop]="true">
+  <ng-template let-item pTemplate="item">
+    <ng-content></ng-content>
+  </ng-template>
+</p-orderList>
