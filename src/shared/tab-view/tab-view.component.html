@@ -1,0 +1,6 @@
+<p-tabView (onChange)="onTabSelect($event.index)">
+    <p-tabPanel *ngFor="let tab of tabs" [header]="tab.header">
+      <p>{{ tab.content }}</p>
+    </p-tabPanel>
+  </p-tabView>
+  

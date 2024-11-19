@@ -14,6 +14,7 @@ export class DropdownComponent {
   @Input() selectedValues: any;  // To store the selected value
   @Output() valueChange = new EventEmitter<any>(); // Event to emit the selected value
   @Input() disabled :boolean=false;
+  @Input() optionLabel :string ='';
   onSelect(value: any): void {
     this.valueChange.emit(value); // Emit selected value
   }

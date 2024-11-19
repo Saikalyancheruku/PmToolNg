@@ -1,0 +1,19 @@
+<p-dataView 
+  [value]="data" 
+  [layout]="layout" 
+  [paginator]="paginator" 
+  [rows]="rows"
+  [sortField]="sortField" 
+  [sortOrder]="sortOrder">
+  <ng-template pTemplate="header">
+    <ng-content select="[header]"></ng-content>
+  </ng-template>
+
+  <ng-template let-item pTemplate="listItem">
+    <ng-content select="[listTemplate]"></ng-content>
+  </ng-template>
+
+  <ng-template let-item pTemplate="gridItem">
+    <ng-content select="[gridTemplate]"></ng-content>
+  </ng-template>
+</p-dataView>

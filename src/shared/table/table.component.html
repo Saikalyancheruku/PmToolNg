@@ -1,0 +1,70 @@
+<div class="table-wrapper">
+    <p-table
+      [value]="data"
+      [columns]="columns"
+      [paginator]="true"
+      [rows]="rowsPerPage"
+      [lazy]="true"
+      [loading]="loading"
+      [rowsPerPageOptions]="[5, 10, 20]"
+      (onLazyLoad)="onLazyLoad($event)"
+      [totalRecords]="totalRecords"
+      responsiveLayout="scroll"
+    >
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+            {{ col.header }}
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+  
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            <!-- Display values dynamically -->
+            <ng-container *ngIf="!col.type || col.type === 'text'">
+              {{ rowData[col.field] }}
+            </ng-container>
+  
+            <!-- Dropdown -->
+            <ng-container *ngIf="col.type === 'dropdown'">
+              <app-dropdown-component
+                [options]="col.options"
+                [(ngModel)]="rowData[col.field]"
+                [optionLabel]="col.optionLabel"
+              ></app-dropdown-component>
+            </ng-container>
+  
+            <!-- Custom Calendar -->
+            <ng-container *ngIf="col.type === 'date'">
+              <app-calendar-component
+                [(ngModel)]="rowData[col.field]"
+                [dateFormat]="col.dateFormat || 'mm/dd/yy'"
+                [showIcon]="true"
+              ></app-calendar-component>
+            </ng-container>
+  
+            <!-- Button -->
+            <ng-container *ngIf="col.type === 'button'">
+              <app-button-component
+                pButton
+                type="button"
+                [label]="col.buttonLabel || 'Action'"
+                class="p-button-sm"
+                (click)="col.onButtonClick(rowData)"
+              ></app-button-component>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-template>
+  
+      <ng-template pTemplate="empty">
+        <tr>
+            <td [attr.colspan]="columns.length">No records found</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  

@@ -1,0 +1,9 @@
+<p-toolbar>
+    <ng-template pTemplate="start">
+      <app-button-component *ngFor="let item of toolbarItems" pButton 
+              [label]="item.label" [icon]="item.icon" 
+              (click)="onItemClick(item.action)">
+      </app-button-component>
+    </ng-template>
+  </p-toolbar>
+  

@@ -1,0 +1,11 @@
+<p-scroller 
+  [items]="items" 
+  [itemSize]="itemSize" 
+  [lazy]="lazyLoad" 
+  (onLazyLoad)="loadMoreItems($event)">
+  <ng-template let-item pTemplate="item">
+    <div class="item-template">
+      {{ item }}
+    </div>
+  </ng-template>
+</p-scroller>

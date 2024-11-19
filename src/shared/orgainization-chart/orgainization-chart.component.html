@@ -1,0 +1,11 @@
+<p-organizationChart [value]="nodes" [selectionMode]="selectionMode" [style]="chartStyle">
+    <ng-template let-node pTemplate="person">
+      <div class="chart-node">
+        <div>
+          <strong>{{ node.label }}</strong>
+        </div>
+        <p>{{ node.description }}</p>
+      </div>
+    </ng-template>
+  </p-organizationChart>
+  
