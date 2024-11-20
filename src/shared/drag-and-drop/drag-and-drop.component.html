@@ -1,0 +1,27 @@
+<!-- Draggable Items -->
+<div [ngClass]="droppableClass">
+    <ul class="list-none flex flex-column gap-2 p-0 m-0">
+      <li
+        *ngFor="let item of availableItems"
+        [ngClass]="draggableItemClass"
+        pDraggable
+        (onDragStart)="dragStart(item)"
+        (onDragEnd)="dragEnd()"
+      >
+        {{ item.name }}
+      </li>
+    </ul>
+  </div>
+  
+  <!-- Droppable Zone -->
+  <div [ngClass]="droppableClass" pDroppable (onDrop)="drop()">
+    <p class="text-center surface-border border-bottom-1">
+      {{ dropZoneTitle }}
+    </p>
+    <ul class="list-none flex flex-column gap-2 p-0 m-0" *ngIf="selectedItems.length">
+      <li *ngFor="let item of selectedItems" [ngClass]="draggableItemClass">
+        {{ item.name }}
+      </li>
+    </ul>
+  </div>
+  

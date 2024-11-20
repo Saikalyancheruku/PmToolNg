@@ -1,0 +1,25 @@
+/* Skeleton styles can be customized here, but PrimeNG handles the main styles */
+.p-skeleton {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    position: relative;
+  }
+  
+  .p-skeleton-circle {
+    border-radius: 50%;
+  }
+  
+  .p-skeleton-sm {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .p-skeleton-lg {
+    width: 200px;
+    height: 40px;
+  }
+  
+  .p-skeleton-no-animation {
+    animation: none;
+  }
+  
