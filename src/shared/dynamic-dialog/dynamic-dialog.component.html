@@ -1,0 +1,10 @@
+<app-dynamic-dialog
+  [title]="title"
+  [content]="content"
+  [position]="position"
+  [visible]="visible"
+  (close)="onClose()"
+  (action)="onAction($event)">
+</app-dynamic-dialog>
+
+<app-button-component pButton label="Show Dialog" icon="pi pi-external-link" ></app-button-component>

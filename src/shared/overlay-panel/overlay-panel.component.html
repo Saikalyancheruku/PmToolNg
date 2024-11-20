@@ -1,0 +1,21 @@
+<p-overlayPanel #op [dismissable]="dismissable" [appendTo]="appendTo" [styleClass]="styleClass">
+    <div>
+      <p>{{ content }}</p>
+      <button 
+        pButton 
+        label="Action" 
+        icon="pi pi-check" 
+        (click)="onAction('actionName')">
+      </button>
+      <button 
+        pButton 
+        label="Close" 
+        icon="pi pi-times" 
+        (click)="overlayPanel.hide()">
+      </button>
+    </div>
+  </p-overlayPanel>
+  
+  <!-- Trigger Element -->
+  <button pButton label="Show Overlay Panel" icon="pi pi-info" (click)="show($event)"></button>
+  
