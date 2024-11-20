@@ -1,0 +1,21 @@
+<p-sidebar 
+  [(visible)]="visible" 
+  [position]="position" 
+  [styleClass]="styleClass" 
+  [showCloseIcon]="closeable"
+  (onHide)="onClose()">
+  <h3>{{ title }}</h3>
+  <div>
+    <p>{{ content }}</p>
+    <!-- Dynamic Content Area -->
+  </div>
+  <p-footer>
+    <button 
+      *ngFor="let button of buttons" 
+      pButton 
+      [label]="button.label" 
+      [icon]="button.icon" 
+      (click)="onAction(button.action)">
+    </button>
+  </p-footer>
+</p-sidebar>
