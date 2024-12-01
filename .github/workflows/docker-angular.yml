@@ -44,4 +44,8 @@ jobs:
     - name: Test Docker container
       run: docker run -d -p 8080:80 angular-frontend
 
+    - name: Deploy to Render
+        run: |
+          render login --api-key ${{ secrets.RENDER_API_KEY }}
+          render deploy --service project-management
 
