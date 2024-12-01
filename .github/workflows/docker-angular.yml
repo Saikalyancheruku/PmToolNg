@@ -9,48 +9,49 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
-      - name: Checkout code
-        uses: actions/checkout@v3
+    # Step 1: Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      # Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+    # Step 2: Set up Node.js environment
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
 
-      # Cache Node.js modules
-      - name: Cache Node modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+    # Step 3: Cache Node.js modules
+    - name: Cache Node modules
+      uses: actions/cache@v3
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
 
-      # Install dependencies
-      - name: Install dependencies
-        run: npm install
+    # Step 4: Install dependencies
+    - name: Install dependencies
+      run: npm install
 
-      # Build the Docker image
-      - name: Build Docker image
-        run: docker build -t angular-frontend .
+    # Step 5: Build the Docker image
+    - name: Build Docker image
+      run: docker build -t angular-frontend .
 
-      # Test the Docker container
-      - name: Test Docker container
-        run: docker run -d -p 8080:80 angular-frontend
+    # Step 6: Test the Docker container
+    - name: Test Docker container
+      run: docker run -d -p 8080:80 angular-frontend
 
-      # Install Render CLI
-      - name: Install Render CLI
-        run: |
-          npm install -g render-cli
+    # Step 7: Install Render CLI
+    - name: Install Render CLI
+      run: npm install -g render-cli
 
-      # Deploy to Render
-      - name: Deploy to Render
-        run: |
-          render login --api-key ${{ secrets.RENDER_API_KEY }}
-          render deploy --service project-management
+    # Step 8: Deploy to Render
+    - name: Deploy to Render
+      env:
+        RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      run: |
+        echo "${{ secrets.RENDER_API_KEY }}" > ~/.render-api-key
+        render deploy --service project-management --key ~/.render-api-key
