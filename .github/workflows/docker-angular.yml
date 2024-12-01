@@ -42,16 +42,33 @@ jobs:
 
     # Step 6: Test the Docker container
     - name: Test Docker container
-      run: docker run -d -p 8080:80 angular-frontend
+      run: |
+        docker run -d -p 8080:80 --name angular-container angular-frontend
+        sleep 10 # Allow container to initialize
+        curl -I http://localhost:8080
 
     # Step 7: Install Render CLI
     - name: Install Render CLI
       run: npm install -g render-cli
 
-    # Step 8: Deploy to Render
+    # Step 8: Verify Render CLI installation
+    - name: Verify Render CLI
+      run: render --version
+
+    # Step 9: Set Render API Key
+    - name: Set Render API Key
+      run: echo ${{ secrets.RENDER_API_KEY }} > ~/.render-api-key
+
+    # Step 10: Deploy to Render
     - name: Deploy to Render
       env:
         RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       run: |
-        echo "${{ secrets.RENDER_API_KEY }}" > ~/.render-api-key
-        render deploy --service project-management --key ~/.render-api-key
+        render deploy --service project-management --region us-central --env docker --verbose
+
+    # Step 11: Clean up Docker container
+    - name: Stop and remove Docker container
+      if: always()
+      run: |
+        docker stop angular-container || true
+        docker rm angular-container || true
