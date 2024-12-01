@@ -21,7 +21,7 @@ FROM nginx:1.21-alpine
 
 # Copy the build output to Nginx's default public directory
 COPY --from=build /app/dist/project-management-ng /usr/share/nginx/html
-
+COPY nginx.conf /etc/nginx/nginx.conf
 # Expose the default Nginx port
 EXPOSE 80
 
