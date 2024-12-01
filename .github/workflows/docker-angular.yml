@@ -61,7 +61,7 @@ jobs:
       env:
         RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       run: |
-        render deploy --service project-management --region us-central --env docker --verbose
+        render deploy --service project-management --region us-central --env docker --from-file ./Dockerfile --verbose
 
     # Step 11: Clean up Docker container
     - name: Stop and remove Docker container
