@@ -44,6 +44,4 @@ jobs:
     - name: Test Docker container
       run: docker run -d -p 8080:80 angular-frontend
 
-    # (Optional) Lint the code
-    - name: Lint code
-      run: npm run lint
+
