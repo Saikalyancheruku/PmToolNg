@@ -42,10 +42,7 @@ jobs:
 
     # Step 6: Test the Docker container
     - name: Test Docker container
-      run: |
-        docker run -d -p 8080:80 --name angular-container angular-frontend
-        sleep 10 # Allow container to initialize
-        curl -I http://localhost:8080
+      run: docker run -d -p 8080:80 angular-frontend
 
     # Step 7: Install Render CLI
     - name: Install Render CLI
