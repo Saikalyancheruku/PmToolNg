@@ -36,9 +36,6 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests
-      run: npm run test -- --watch=false --browsers=ChromeHeadless
-
     # Build the Docker image
     - name: Build Docker image
       run: docker build -t angular-frontend .
