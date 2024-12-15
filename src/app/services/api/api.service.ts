@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from '../Config/config.service';
-import { ENDPOINTS } from '../../../assets/EndPoints';
+import { ENDPOINTS } from '../../../assets/ENDPOINTS';
 import { map, Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
