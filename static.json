@@ -1,0 +1,9 @@
+{
+    "root": "dist/project-management-ng/",
+    "headers": {
+      "/**": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }
+  }
+  
