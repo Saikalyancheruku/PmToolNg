@@ -1,5 +1,3 @@
-name: Dockerized Angular CI/CD
-
 on:
   push:
     branches:
@@ -31,7 +29,6 @@ jobs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-
     # Step 4: Install dependencies
     - name: Install dependencies
       run: npm install
@@ -62,12 +59,11 @@ jobs:
        RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       run: |
        echo "${{ secrets.RENDER_API_KEY }}" > ~/.render-api-key
-       render deploy --service project-management --region us-central --env docker --from-file ./Dockerfile --verbose
-
+       render deploy --service project-management --region us-central --env docker --from-file ./Dockerfile --engine mustache --verbose
 
     # Step 11: Clean up Docker container
     - name: Stop and remove Docker container
       if: always()
       run: |
-        docker stop angular-container || true
-        docker rm angular-container || true
+        docker ps -q -f name=angular-container && docker stop angular-container || true
+        docker ps -a -q -f name=angular-container && docker rm angular-container || true
